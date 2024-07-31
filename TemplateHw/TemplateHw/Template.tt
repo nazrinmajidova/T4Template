@@ -1,0 +1,134 @@
+﻿<#@ template language="C#" hostspecific="true" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+
+
+
+<#
+
+// veri tabanı bağlantı stringi
+	string connection = "Server=DESKTOP-4BRHCUT\\SQLEXPRESS;Database=Northwind;Trusted_Connection=True;";
+
+
+
+string GetTableData(string tableName) {
+
+using SqlConnection sqlCon = new SqlConnection(connection); 
+sqlCon.Open();
+
+string sqlQuery = 
+	@"DECLARE @table NVARCHAR(250) = @tableName;
+	
+	DECLARE @classHeader NVARCHAR(MAX) = 'public class ' + replace(@table,' ','') + '
+	{
+	';
+	
+	DECLARE @classFooter NVARCHAR(MAX) = '
+	}';
+		
+	DECLARE @properties NVARCHAR(MAX) = (
+	SELECT STRING_AGG(CONCAT(
+	' public ',
+	IIF(DATA_TYPE = 'nvarchar', 'string' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'uniqueidentifier', 'string' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	
+	
+	IIF(DATA_TYPE = 'ntext', 'string' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'nchar', 'string' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	
+	
+	IIF(DATA_TYPE = 'int', 'int' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	
+	
+	IIF(DATA_TYPE = 'smallint', 'short' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'tinyint', 'byte' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'money', 'decimal' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'float', 'float' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'decimal', 'decimal' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'bit', 'bool' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'datetime', 'DateTime' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'date', 'DateTime' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'datetime2', 'DateTime' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'image', 'byte[]' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	IIF(DATA_TYPE = 'real', 'float' + IIF(IS_NULLABLE = 'YES', '?', ''), ''),
+	' ',
+	COLUMN_NAME,
+	' { get; set; }',
+	IIF((DATA_TYPE = 'nvarchar' OR DATA_TYPE = 'nchar') AND IS_NULLABLE = 'NO', ' = null!;', ''),
+	CHAR(13), CHAR(10)
+	), '') AS properties
+	FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_NAME = @table
+	AND TABLE_SCHEMA = 'dbo'
+	);
+	
+	DECLARE @classDefinition NVARCHAR(MAX) = @classHeader + @properties + @classFooter;
+	
+	SELECT @classDefinition; ";
+
+	 using SqlCommand command = new SqlCommand(sqlQuery, sqlCon);
+     command.Parameters.AddWithValue("@tableName", tableName);
+     string result = (string)command.ExecuteScalar();
+
+	 return result;
+
+}
+
+	// klasör oluşturma yolu
+	string folderPath = Path.Combine(Host.ResolvePath("."), "Models");
+
+	// klasör yoksa oluştur
+	if (!Directory.Exists(folderPath))
+	{
+		Directory.CreateDirectory(folderPath);
+	}
+
+
+
+
+	// tablo adlarını al
+	var tableNames = new List<string>();
+
+
+	// veri tabanı bağlantısı
+
+	using SqlConnection con = new SqlConnection(connection);
+	using SqlCommand cmd = new("SELECT TABLE_NAME  FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG='Northwind'", con);
+	if (con.State == System.Data.ConnectionState.Closed)
+	{
+		con.Open();
+	}
+
+	SqlDataReader reader = cmd.ExecuteReader();
+	while (reader.Read())
+	{
+		tableNames.Add(reader[0].ToString());
+	}
+
+	reader.Close();
+	con.Close();
+
+
+	// tablo adlarına göre dosya oluştur
+	foreach(string tableName in tableNames){
+	  string classPath = Path.Combine(folderPath, tableName.Replace(" ", "")  + ".cs");
+
+
+	  // dosya yazma işlemi
+	 using(FileStream fs = File.Create(classPath)){
+			string content = GetTableData(tableName);
+            byte[] contentBytes = Encoding.UTF8.GetBytes(content);
+            fs.Write(contentBytes, 0, contentBytes.Length);
+
+
+
+	 }
+	}
+
+#>
