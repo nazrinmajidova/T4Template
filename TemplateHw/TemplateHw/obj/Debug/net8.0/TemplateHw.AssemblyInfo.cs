@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TemplateHw")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7a4b15b27bb7cd059e15f33171a89b1d6b57257")]
 [assembly: System.Reflection.AssemblyProductAttribute("TemplateHw")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TemplateHw")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

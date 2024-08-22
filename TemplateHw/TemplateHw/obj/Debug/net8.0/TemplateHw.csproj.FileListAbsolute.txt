@@ -3,3 +3,9 @@ D:\Back-End\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.GeneratedMSBuildEd
 D:\Back-End\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.AssemblyInfoInputs.cache
 D:\Back-End\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.AssemblyInfo.cs
 D:\Back-End\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.csproj.CoreCompileInputs.cache
+C:\Users\nazrinamai\Desktop\T4Template\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.csproj.AssemblyReference.cache
+C:\Users\nazrinamai\Desktop\T4Template\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nazrinamai\Desktop\T4Template\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.AssemblyInfoInputs.cache
+C:\Users\nazrinamai\Desktop\T4Template\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.AssemblyInfo.cs
+C:\Users\nazrinamai\Desktop\T4Template\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.csproj.CoreCompileInputs.cache
+C:\Users\nazrinamai\Desktop\T4Template\TemplateHw\TemplateHw\obj\Debug\net8.0\TemplateHw.sourcelink.json

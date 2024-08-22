@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nazrinamai\\Desktop\\T4Template\\TemplateHw\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A591A13-A38D-4A2F-81E3-5E331EEC2B7E}|TemplateHw\\TemplateHw.csproj|c:\\users\\nazrinamai\\desktop\\t4template\\templatehw\\templatehw\\template.tt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{5A591A13-A38D-4A2F-81E3-5E331EEC2B7E}|TemplateHw\\TemplateHw.csproj|solutionrelative:templatehw\\template.tt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A591A13-A38D-4A2F-81E3-5E331EEC2B7E}|TemplateHw\\TemplateHw.csproj|c:\\users\\nazrinamai\\desktop\\t4template\\templatehw\\templatehw\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A591A13-A38D-4A2F-81E3-5E331EEC2B7E}|TemplateHw\\TemplateHw.csproj|solutionrelative:templatehw\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Template.tt",
+              "DocumentMoniker": "C:\\Users\\nazrinamai\\Desktop\\T4Template\\TemplateHw\\TemplateHw\\Template.tt",
+              "RelativeDocumentMoniker": "TemplateHw\\Template.tt",
+              "ToolTip": "C:\\Users\\nazrinamai\\Desktop\\T4Template\\TemplateHw\\TemplateHw\\Template.tt",
+              "RelativeToolTip": "TemplateHw\\Template.tt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-08-22T05:39:39.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nazrinamai\\Desktop\\T4Template\\TemplateHw\\TemplateHw\\Program.cs",
+              "RelativeDocumentMoniker": "TemplateHw\\Program.cs",
+              "ToolTip": "C:\\Users\\nazrinamai\\Desktop\\T4Template\\TemplateHw\\TemplateHw\\Program.cs",
+              "RelativeToolTip": "TemplateHw\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T05:39:35.848Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
